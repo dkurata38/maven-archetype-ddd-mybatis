@@ -18,13 +18,17 @@
         <requiredProperty key="rootPackagePath">
             <defaultValue>${rootPackage.replace("\\.", "/")}</defaultValue>
         </requiredProperty>
-        <!-- 最初に作成するWEBアプリケーションの名前 -->
-        <requiredProperty key="firstApplicationName">
-            <defaultValue>${artifactId}</defaultValue>
-        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
+        <!-- README.mdのフィルタリング設定 -->
+        <fileSet filtered="true" encoding="UTF-8">
+            <includes>
+                <include>README.md</include>
+            </includes>
+        </fileSet>
+
+        <!-- domain module -->
         <fileSet filtered="true" encoding="UTF-8">
             <directory>domain</directory>
             <includes>
@@ -32,33 +36,36 @@
             </includes>
         </fileSet>
         <fileSet filtered="true" encoding="UTF-8">
+            <directory>domain/src/main/java/__rootPackagePath__/domain</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>domain/src/main/resources</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>domain/src/test/java/__rootPackagePath__/domain</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>domain/src/test/resources</directory>
+        </fileSet>
+
+        <!-- infrastructure module -->
+        <fileSet filtered="true" encoding="UTF-8">
             <directory>infrastructure</directory>
             <includes>
                 <include>pom.xml</include>
             </includes>
         </fileSet>
-
-        <!--        <fileSet filtered="true" encoding="UTF-8">-->
-        <!--            <directory>domain/src/main/java/__rootPackagePath__/infrastructure</directory>-->
-        <!--        </fileSet>-->
-        <!--        <fileSet filtered="true" packaged="true" encoding="UTF-8">-->
-        <!--            <directory>src/main/java</directory>-->
-        <!--            <includes>-->
-        <!--                <include>**/*.java</include>-->
-        <!--            </includes>-->
-        <!--        </fileSet>-->
-        <!--        <fileSet filtered="true" encoding="UTF-8">-->
-        <!--            <directory>src/main/webapp/WEB-INF</directory>-->
-        <!--            <includes>-->
-        <!--                <include>*.xml</include>-->
-        <!--            </includes>-->
-        <!--        </fileSet>-->
-        <!--        <fileSet filtered="false" encoding="UTF-8">-->
-        <!--            <directory>src/main/webapp/WEB-INF</directory>-->
-        <!--            <includes>-->
-        <!--                <include>**/*</include>-->
-        <!--            </includes>-->
-        <!--        </fileSet>-->
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>infrastructure/src/main/java/__rootPackagePath__/infrastructure</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>infrastructure/src/main/resources</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>infrastructure/src/test/java/__rootPackagePath__/infrastructure</directory>
+        </fileSet>
+        <fileSet filtered="true" encoding="UTF-8">
+            <directory>infrastructure/src/test/resources</directory>
+        </fileSet>
     </fileSets>
-
 </archetype-descriptor>
